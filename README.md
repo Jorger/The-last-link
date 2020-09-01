@@ -1,4 +1,4 @@
-# 🔗 The-last-link
+# 🔗 The last link
 
 Juego realizado para la [#js13k2020](https://js13kgames.com/), el tema para está edición fue [404](https://medium.com/js13kgames/js13kgames-2020-has-started-c7e003292613), 
 el juego está basado en el popular juego denominado [damas](https://es.wikipedia.org/wiki/Damas) o [checkers](https://en.wikipedia.org/wiki/Draughts) en inglés.
