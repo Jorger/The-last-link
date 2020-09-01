@@ -62,7 +62,7 @@ Está modalidad requiere conexión a internet, ya que se hará uso de [websocket
 
 Esta modalidad nos permitirá inciar una partida con cualquier jugador que este conectado, se podría intepretar como una partida aleatoria, ya que se creará una sala con aquella persona que este disponible en ese momento, 
 en esta partida además se encuenta con la opción de tener un "chat" a través de emojis, para así darle un toque social al juego, cada uno usuario tiene 10 segundos para realizar su movimiento, si no lo hace 
-en este lapso de tiempo se hara un lanzamiento aleatorio.
+en este lapso de tiempo se hará un lanzamiento aleatorio.
 
 ### 🤝 Play with a friend
 
@@ -77,9 +77,30 @@ se aplican las mismas funcionalidades de la modalidad anterior, contando con el 
 
 Es una modalidad especial en la cual se busca que los dispositivos móviles se conviertan en controles remotos, en este caso sólo existirá un sólo tablero, el cual recibirá los movimientos dados por los jugadores a través de los "controles".
 
-En está modalidad no existe de tiempo, ni interacción a través de emojis, ya que es una mezcla entre el funcionamiento offline en el cual se tiene un sólo tablero y el funcionamiento online, ya que se reuqiere conexión de internet, se busca que los 
+En está modalidad no existe el tiempo, ni interacción a través de emojis, ya que es una mezcla entre el funcionamiento offline en el cual se tiene un sólo tablero y el funcionamiento online, ya que se reuqiere conexión de internet, se busca que los 
 jugadores se encuentre en el mismo sitio físicamente, a diferencia de las dos modalidades anteriores.
 
+## Ejecución.
+
+Este proyecto es un fork del [proyecto original](https://github.com/js13kGames/js13kserver) creado para está categoría, en este caso se requiere de NodeJS.
+
+### Instalación de dependencias.
+
+```
+npm i
+```
+
+### Ejecución del proyecto
+
+```
+npm run start:dev
+```
+
+En este caso se el proyecto correrá en http://localhost:3000/
+
+# Autor
+* Jorge Rubaino 
+[@ostjh](https://twitter.com/ostjh)
 
 
 
