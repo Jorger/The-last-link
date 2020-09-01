@@ -1,0 +1,750 @@
+:root {
+  --c-b: #000;
+  --c-w: #fff;
+  --c-br: #754;
+  --c-sh: #000000ab;
+  --c-y: #dc6;
+  --c-g: #d9e0e3;
+  --d-t: 49px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--c-b);
+  font-family: Arial;
+  overflow: hidden;
+  position: fixed;
+  user-select: none;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+/* Clase para establecer elementos all 100% en alto y en ancho */
+.wh {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Clase para centrar elementos en la pantalla*/
+.ce {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* La clase base donde se renderizará todo */
+.s {
+  background: var(--c-w);
+  overflow: hidden;
+  position: relative;
+}
+
+/* borad wrapper */
+.bw {
+  background: var(--c-y);
+}
+
+.bw.red {
+  background: var(--c-red);
+}
+
+.bw.blue {
+  background: var(--c-blue);
+}
+
+/* Clase para el botón de cerrar */
+.cl {
+  background: var(--c-w);
+  border-radius: 50% 50% 0 0;
+  font-weight: bold;
+  height: 40px;
+  padding-top: 0;
+  position: absolute;
+  right: -10px;
+  top: 30px;
+  transform: rotate(-90deg);
+  width: 50px;
+  z-index: 3;
+}
+
+/* Para renderizar los turnos */
+.tu {
+  border: 5px solid var(--c-w);
+  color: var(--c-w);
+  font-size: 35px;
+  font-weight: bold;
+  height: 85px;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  line-height: 0.8;
+  width: 50%;
+  z-index: 3;
+}
+
+.tu.red {
+  background: var(--c-red);
+}
+
+.tu.blue {
+  background: var(--c-blue);
+}
+
+/* Para el turno de arriba */
+.tu.to {
+  border-radius: 0 0 50% 50%;
+  top: -10px;
+}
+
+/* Para el turno de abajo */
+.tu.bo {
+  border-radius: 50% 50% 0 0;
+  bottom: -10px;
+}
+
+/* Para ocultar un turno */
+.tu.sh {
+  animation: bIn 1.5s both;
+}
+
+/* Para enderizar el score */
+.sc {
+  background: var(--c-w);
+  border-radius: 50% 50% 0 0;
+  bottom: 40px;
+  font-weight: bold;
+  height: 40px;
+  left: -15px;
+  position: absolute;
+  transform: rotate(90deg);
+  width: 65px;
+}
+
+.sc span {
+  transform: rotate(180deg);
+}
+
+.sc span:first-child {
+  margin-right: 10px;
+}
+
+.sc span:first-child:before {
+  color: var(--c-b);
+  content: '-';
+  height: 25%;
+  left: -40%;
+  position: absolute;
+  top: 0;
+  width: 25%;
+}
+
+.sc-red {
+  color: var(--c-red);
+}
+
+.sc-blue {
+  color: var(--c-blue);
+}
+
+/* Para la capa que tapa el juego al inicio y al final del mismo */
+.bc {
+  background: var(--c-sh);
+  color: var(--c-w);
+  position: absolute;
+  z-index: 2;
+}
+
+.bc span {
+  animation: bIn 1.5s both;
+  font-size: 120px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 9px 11px 4px var(--c-sh);
+  text-transform: uppercase;
+}
+
+.bc.hi {
+  display: none;
+}
+
+.bc.red {
+  background: var(--c-red);
+}
+
+.bc.blue {
+  background: var(--c-blue);
+}
+
+/* Base del board */
+.b {
+  border: 10px solid var(--c-b);
+  position: relative;
+  width: 100%;
+  background: var(--c-w);
+  background-image: linear-gradient(
+      45deg,
+      var(--c-br) 25%,
+      transparent 26%,
+      transparent 75%,
+      var(--c-br) 75%,
+      var(--c-br)
+    ),
+    linear-gradient(
+      45deg,
+      var(--c-br) 25%,
+      transparent 26%,
+      transparent 75%,
+      var(--c-br) 75%,
+      var(--c-br)
+    );
+  background-size: calc(var(--d-t) * 2) calc(var(--d-t) * 2);
+  background-position: 0 0, var(--d-t) var(--d-t);
+  z-index: 0;
+  transition: all 2s ease;
+}
+
+/* Clase para rotar el board */
+.b.ro {
+  transform: rotate(180deg);
+}
+
+/* Para el elemento token */
+.t-e,
+.t-p {
+  height: calc(var(--d-t) - 3px);
+  position: absolute;
+  width: calc(var(--d-t) - 3px);
+  z-index: 1;
+}
+
+.t-e {
+  transition: all 0.5s ease;
+}
+
+.t-e.sel {
+  background: var(--c-y);
+}
+
+/* Para eliminar un elemento/token */
+.t-e.re {
+  transform: scale(0);
+}
+
+.t-e:after,
+.t-p:after {
+  animation: bIn 1.5s both;
+  background: var(--c-y);
+  border-radius: 50%;
+  content: '';
+  height: calc(var(--d-t) - 10px);
+  left: 8%;
+  position: absolute;
+  top: 8%;
+  width: calc(var(--d-t) - 10px);
+}
+
+.t-e.blue:after,
+.t-e.red:after {
+  border: 4px solid var(--c-b);
+  box-shadow: 2px 3px 2px var(--c-sh);
+  height: calc(var(--d-t) - 20px);
+  left: 15%;
+  top: 15%;
+  width: calc(var(--d-t) - 20px);
+  z-index: -1;
+}
+
+.b.ro .t-e.blue:after,
+.b.ro .t-e.red:after {
+  box-shadow: -2px -3px 2px var(--c-sh);
+}
+
+.b.ro .t-e.blue::before,
+.b.ro .t-e.red::before {
+  transform: rotate(180deg);
+}
+
+.t-e:disabled,
+.t-e[disabled] {
+  color: var(--c-b);
+}
+
+/* Para el ícono de link base */
+.t-e.blue:before,
+.t-e.red:before {
+  background: url(/s.png) -16px -0;
+  content: '';
+  height: 16px;
+  left: 17px;
+  position: absolute;
+  top: 17px;
+  width: 16px;
+  z-index: 10;
+}
+
+/* Para adicionar la corona */
+.t-e.blue.c:before,
+.t-e.red.c:before {
+  background: url(/s.png) -0 -0;
+}
+
+/* Para e ícono de link roto */
+.t-e.blue.bl:before,
+.t-e.red.bl:before {
+  background: url(/s.png) -32px -0;
+}
+
+/* Para hacer rotar al token */
+.t-e.blue.r:after,
+.t-e.red.r:after {
+  animation: rotate 2s linear infinite;
+  border-style: dashed;
+}
+
+/* Para cuando se muestra que los tokens no están disponibles para ser seleccioandos */
+.t-e.blue.di,
+.t-e.red.di {
+  opacity: 0.2;
+}
+
+.t-e.blue:after {
+  background: var(--c-blue);
+}
+
+.t-e.red:after {
+  background: var(--c-red);
+}
+
+.t-p {
+  display: none;
+}
+
+/* Para mostrar los elementos */
+.t-p.v {
+  display: block;
+}
+
+/* Para las clases del lobby*/
+.lo {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Para el título */
+.ti {
+  background: var(--c-y);
+  color: var(--c-w);
+  flex-direction: column;
+  font-size: 40px;
+  font-weight: bold;
+  height: 25%;
+  margin-bottom: 5%;
+  position: relative;
+  text-align: center;
+  text-shadow: 3px 6px 2px var(--c-sh);
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.ti span {
+  font-size: 60px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Para los botones en el título */
+.ti-bt {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.ti-bt button {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+/* Para el contenedor de los botones */
+.cb {
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.cb .btn {
+  animation-fill-mode: both;
+  animation-name: bInL;
+  font-size: 18px;
+  height: 50px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 20px;
+  width: 70%;
+}
+
+.cb .btn:nth-child(1) {
+  animation-duration: 0.5s;
+}
+
+.cb .btn:nth-child(2) {
+  animation-duration: 1s;
+}
+
+.cb .btn:nth-child(3) {
+  animation-duration: 1.5s;
+}
+
+.cb .btn:nth-child(4) {
+  animation-duration: 2s;
+}
+
+.cb .btn:nth-child(5) {
+  animation-duration: 2.5s;
+}
+
+.cb .btn:nth-child(6) {
+  animation-duration: 3s;
+}
+
+.cb .btn span {
+  font-size: 25px;
+}
+
+/* Para los botones */
+.btn {
+  border-radius: 10px;
+  border: none;
+  color: var(--c-w);
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.btn.blue {
+  background: #2ae;
+  box-shadow: 0 5px var(--c-blue);
+}
+
+.btn.blue:active {
+  box-shadow: 0 1px var(--c-blue);
+}
+
+.btn.red {
+  background: #c66;
+  box-shadow: 0 5px var(--c-red);
+}
+
+.btn.red:active {
+  box-shadow: 0 1px var(--c-red);
+}
+
+/* Para la base del modal del lobby */
+.mo {
+  animation: bIn 0.5s both;
+  background: var(--c-g);
+  border-radius: 10px;
+  color: var(--c-b);
+  flex-direction: column;
+  height: 40%;
+  position: relative;
+  width: 80%;
+}
+
+.se {
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+
+.frm input {
+  border-radius: 10px 0 0 10px;
+  border: 0;
+  font-size: 20px;
+  margin: 20px 0;
+  padding: 10px;
+  width: 80%;
+}
+
+.frm .btn {
+  height: 45px;
+  margin-top: 5px;
+  width: 20%;
+}
+
+.se.so {
+  display: flex;
+}
+
+/* Para el boton de cerrar el modal */
+.clm {
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+}
+
+/*El botón de crear el board*/
+.cta {
+  height: 50px;
+  margin-bottom: 20px;
+  width: 60%;
+}
+
+/* Clases para el "control remoto" */
+.co {
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.co .t-e {
+  background: var(--c-br);
+  border: 1px solid var(--c-w);
+  flex: 1 0 21%;
+  height: calc(var(--d-t) * 2.2);
+  position: relative;
+  width: calc(var(--d-t) * 2.2);
+}
+
+.co .t-e.blue:after,
+.co .t-e.red:after {
+  height: var(--d-t);
+  width: var(--d-t);
+  left: 20%;
+  top: 20%;
+}
+
+.co .t-e.blue:before,
+.co .t-e.red:before {
+  transform: scale(2);
+  left: 42%;
+  top: 39%;
+}
+
+/* Para el tooltip*/
+.tp {
+  background: var(--c-sh);
+  display: none;
+  flex-wrap: wrap;
+  height: calc(var(--d-t) * 2.2);
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.5s ease;
+  width: calc(var(--d-t) * 2.1);
+  z-index: 2;
+}
+
+/* Para mostrar el tooltip */
+.tp.sht {
+  display: flex;
+}
+
+/* Para girarlo */
+.tp.tpr {
+  transform: rotate(180deg);
+}
+
+.tp .t-p {
+  display: block;
+  position: relative;
+  visibility: hidden;
+}
+
+.tp .t-p.v {
+  visibility: visible;
+}
+
+/* Para los emojis */
+.ch {
+  background: var(--c-w);
+  bottom: -70px;
+  height: 15%;
+  left: 15%;
+  outline: 10px solid var(--c-b);
+  padding: 0 10px;
+  position: absolute;
+  width: 70%;
+}
+
+.ch-w {
+  display: flex;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.ch-w::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.ems {
+  font-size: 30px;
+  margin: 10px 3px;
+  padding: 0 5px;
+}
+
+.ems:disabled {
+  opacity: 0.2;
+}
+
+.ems.seb:disabled {
+  animation: bIn 1s both;
+  background: var(--c-sh);
+  filter: drop-shadow(2px 4px 6px var(--c-b));
+  color: var(--c-y);
+}
+
+/* Para mostrar el emoji */
+.ch-s {
+  position: absolute;
+  top: -80px;
+  left: 40%;
+  font-size: 60px;
+  display: none;
+}
+
+.ch-s.an {
+  display: block;
+  animation: bIn 1.5s both;
+}
+
+/* renderiza el mensaje de 404 */
+.fof {
+  font-size: 30px;
+  font-weight: bold;
+  height: var(--d-t);
+  position: absolute;
+  text-shadow: 4px 2px 3px var(--c-b);
+  width: var(--d-t);
+}
+
+.co .fof {
+  font-size: 50px;
+  height: calc(var(--d-t) * 2);
+  width: calc(var(--d-t) * 2);
+  z-index: 2;
+}
+
+.b.ro .fof {
+  transform: rotate(180deg);
+}
+
+.fof span:nth-child(1) {
+  color: var(--c-y);
+  animation: fUp 1.5s both;
+}
+
+.fof span:nth-child(2) {
+  color: var(--c-blue);
+  animation: fUp 2.5s both;
+}
+
+.fof span:nth-child(3) {
+  color: var(--c-red);
+  animation: fUp 3.5s both;
+}
+
+/* Animaciones */
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes bInL {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -150%, 0);
+  }
+}

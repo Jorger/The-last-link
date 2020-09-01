@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The last link</title>
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="manifest" href="/m.json" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#000" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="wh ce">
+    <div class="s ce"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/ZzFX.micro.js"></script>
+    <script src="/shared.js"></script>
+    <script src="/client.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('serviceworker.js')
+          .then(function () {
+            console.log('[Event] Service Worker registered successfully');
+          })
+          .catch(function () {
+            console.log('[Warning] Service worker registration failed');
+          });
+      } else {
+        console.log('[Warning] ServiceWorker not found in navigator');
+      }
+    </script>
+  </body>
+</html>
