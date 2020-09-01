@@ -14,7 +14,7 @@ En está competencia existe la categoría de [server](https://github.com/js13kGa
 la idea es que el juego comprimido en un acrhivo .zip no supere los 13KB, para este juego el archivo que contiene todo el juego y que pesa 13 KB, es el denominado [dist.zip](https://github.com/Jorger/The-last-link/blob/master/dist.zip), los archivos comprimidos está ubicados en la carpeta [public](https://github.com/Jorger/The-last-link/tree/master/public), 
 de la misma forma los archivos no comprimidos del juego se encuetran en la carpeta [public_uncompressed](https://github.com/Jorger/The-last-link/tree/master/public_uncompressed)
 
-## Modalidades de Juego.
+## 🎮 Modalidades de Juego.
 
 El juego cuenta con dos tipos de modalidades como son:
 
@@ -30,7 +30,7 @@ El juego cuenta con dos tipos de modalidades como son:
   * 🤝 Play with a friend
   * 🎉 Party Mode
 
-## Offline.
+## 1️⃣ Offline.
 
 En está modalidad toda la actividad del juego se lleva a cabo en el mismo dispotivo, gracias al uso de [service workers](https://developers.google.com/web/fundamentals/primers/service-workers), el juego puede funcionar offline, además de ser un [PWA](https://web.dev/progressive-web-apps/)
 
@@ -52,7 +52,7 @@ En esta modalides competiremos vs un bot, es una modalidad que también sirve co
 
 Está es una modalidad "especial", ya que sólo actuaremos como expectadores, fue útil en el momento de desarrollo, pero también es útil a manera de práctica, ya que se pueden ver movimientos que tal vez no salgan en las oras modalidades, además me pareció divertido dejarlo 😬
 
-## Online.
+## 2️⃣ Online.
 
 Está modalidad requiere conexión a internet, ya que se hará uso de [websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API), se tienen las siguientes opciones:
 
@@ -80,7 +80,7 @@ Es una modalidad especial en la cual se busca que los dispositivos móviles se c
 En está modalidad no existe el tiempo, ni interacción a través de emojis, ya que es una mezcla entre el funcionamiento offline en el cual se tiene un sólo tablero y el funcionamiento online, ya que se reuqiere conexión de internet, se busca que los 
 jugadores se encuentre en el mismo sitio físicamente, a diferencia de las dos modalidades anteriores.
 
-## Ejecución.
+## 🏃‍♂️ Ejecución.
 
 Este proyecto es un fork del [proyecto original](https://github.com/js13kGames/js13kserver) creado para está categoría, en este caso se requiere de NodeJS.
 
@@ -98,7 +98,26 @@ npm run start:dev
 
 En este caso se el proyecto correrá en http://localhost:3000/
 
-# Autor
+**Nota:**
+
+Se recomiendo renomabrar la carpeta public_uncompressed a public y ésta última ponerle otro nombre, para así ver los archivos sin compresión.
+
+
+## 📦 Compresión de archivos.
+
+Se utilizarán los siguientes herramientas para comprimir los archivos:
+
+* https://xem.github.io/terser-online/
+* https://csscompressor.com/
+* https://tinypng.com/
+* https://javascript-minifier.com/
+
+# 🔈 Sonidos.
+
+Para los sonidos se uzó la librería [ZzFX](https://github.com/KilledByAPixel/ZzFX), la cual es una de las recomendadas entre los [recursos](https://js13kgames.github.io/resources/) de la competencia
+
+
+# 👨🏻‍💻 Autor
 * Jorge Rubaino 
 [@ostjh](https://twitter.com/ostjh)
 
