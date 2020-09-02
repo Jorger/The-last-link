@@ -3,7 +3,7 @@
 Juego realizado para la [#js13k2020](https://js13kgames.com/), el tema para está edición fue [404](https://medium.com/js13kgames/js13kgames-2020-has-started-c7e003292613), 
 el juego está basado en el popular juego denominado [damas](https://es.wikipedia.org/wiki/Damas) o [checkers](https://en.wikipedia.org/wiki/Draughts) en inglés.
 
-En este juego se cuenta con dos jugadores, cada uno con 12 fichas, las fichas se moverán digonalmente hace adelante, una vez se llegue al campo del contrario la ficha se convertirá en un rey,
+En este juego se cuenta con dos jugadores, cada uno con 12 fichas, las fichas se moverán digonalmente hacia adelante, una vez se llegue al campo del contrario la ficha se convertirá en un rey,
 permitiendo que se mueve en todas direcciones, igualmente de forma diagonal, cuando la ficha de un adversario se encuentra en una posición diagonal se podrá eliminar, siempre y cuando la posición siguiente se encuentra libre.
 
 ![image](https://github.com/Jorger/The-last-link/blob/master/images/principal.png?raw=true)
@@ -50,7 +50,7 @@ En esta modalides competiremos vs un bot, es una modalidad que también sirve co
 
 ![botvbot](https://github.com/Jorger/The-last-link/blob/master/images/404_bot_vs_bot.gif?raw=true)
 
-Está es una modalidad "especial", ya que sólo actuaremos como expectadores, fue útil en el momento de desarrollo, pero también es útil a manera de práctica, ya que se pueden ver movimientos que tal vez no salgan en las oras modalidades, además me pareció divertido dejarlo 😬
+Está es una modalidad "especial", ya que sólo actuaremos como expectadores, fue útil en el momento de desarrollo, pero también es útil a manera de práctica, ya que se pueden ver movimientos que tal vez no salgan en las otras modalidades, además me pareció divertido dejarlo 😬
 
 ## 2️⃣ Online.
 
@@ -100,7 +100,7 @@ En este caso se el proyecto correrá en http://localhost:3000/
 
 **Nota:**
 
-Se recomiendo renomabrar la carpeta public_uncompressed a public y ésta última ponerle otro nombre, para así ver los archivos sin compresión.
+Se recomiendo renombrar la carpeta `public_uncompressed` a `public` y ésta última ponerle otro nombre, para así ver los archivos sin compresión.
 
 
 ## 📦 Compresión de archivos.
