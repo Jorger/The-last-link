@@ -112,10 +112,14 @@ Se utilizarán los siguientes herramientas para comprimir los archivos:
 * https://tinypng.com/
 * https://javascript-minifier.com/
 
-# 🔈 Sonidos.
+## 🔈 Sonidos.
 
 Para los sonidos se uzó la librería [ZzFX](https://github.com/KilledByAPixel/ZzFX), la cual es una de las recomendadas entre los [recursos](https://js13kgames.github.io/resources/) de la competencia
 
+## 📖 TO-DO
+
+- [ ] Escribir artículo postmortem
+- [ ] Compartir link de la entrada en la JS13k
 
 # 👨🏻‍💻 Autor
 * Jorge Rubaino 
